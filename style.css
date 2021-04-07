@@ -1,0 +1,121 @@
+:root {
+    --main-color: #EBB81A;
+
+    --main-color-left: #F6EB0F;
+    --main-color-left-dark: #D4B60D;
+    --main-color-right: #F68A0F;
+    --main-color-right-dark: #D48E0D;
+
+    --comp: #001C9E;
+    --comp-dark: #1A3FEB;
+}
+
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.1em;
+    margin: 0;
+    padding: 0;
+    background-color: #ebb71a69;
+}
+
+
+
+nav {
+    display: flex;
+    position: sticky;
+    width: 100%;
+    background-color: var(--comp-dark);
+    align-items: center;
+}
+
+nav > div {
+    margin: 0px auto;
+    padding: 0px;
+}
+
+nav ul {
+    width: fit-content;
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+    list-style-type: none;
+}
+nav ul li {
+    display: inline-block;
+    text-align: center;
+    margin: 0px;
+    padding: 10px 0px 10px 0px;
+    border-right: 4px solid var(--main-color-right-dark);
+    -webkit-transition: background-color 0.1s;
+    -moz-transition: background-color 0.1s;
+    -o-transition: background-color 0.1s;
+    transition: background-color 0.1s;
+}
+nav ul li:last-child {
+    border-right: none;
+}
+nav ul li:hover {
+    background-color: white;
+}
+nav ul li a {
+    font-size: larger;
+    font-weight: bold;
+    color: var(--main-color);
+    padding: 10px 15px;
+    text-decoration: none;
+    transition: color 0.1s;
+}
+nav ul li:hover a {
+    color: black;
+}
+
+
+
+main {
+    width: 75%;
+    margin: 20px auto 0 auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 8px 6px 4px 3px var(--main-color-right-dark);
+}
+
+
+header {
+    font-size: 2em;
+    color: var(--main-color-right-dark);
+    text-align: center;
+}
+
+h1 {
+    font-size: 1.7em;
+    text-decoration: underline var(--main-color-left-dark);
+}
+h2 {
+    margin-top: 40px;
+    font-size: 1.4em;
+    text-decoration: underline var(--main-color-right);
+}
+
+p {
+    text-indent: 10px;
+}
+
+
+
+div.arrows {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+div.arrows > div {
+    display: inline;
+}
+

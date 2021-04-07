@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juros Compostos</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div>
+            <ul>
+                </li><li><a href="#Juros" onclick="changeSection(0, 1)">Juros</a>
+                </li><li><a href="#Poupanças" onclick="changeSection(0, 2)">Poupanças</a>
+                </li><li><a href="#Investimentos" onclick="changeSection(0, 3)">Investimentos</a>
+                </li><li><a href="#Comparação" onclick="changeSection(0, 4)">Comparação</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <main>
+        <header>
+            <strong>Juros Compostos:</strong> Poupanças e Investimentos
+        </header>
+        <p>
+            Neste trabalho exploramos os juros compostos. Nomeadamente, como comparar diferentes formas de aplicar o dinheiro, usando diferentes janelas de tempo, retornos anuais e frequências de composição dos juros.
+        </p>
+        
+        <section name="tema">
+            <h1 id="Juros">Juros Simples vs. Juros Compostos</h1>
+        </section>
+
+        <section name="tema" style="display: none;">
+            <h1 id="Poupanças">Poupanças</h1>
+        </section>
+
+        <section name="tema" style="display: none;">
+            <h1 id="Investimentos">Investimentos</h1>
+            <p>
+                O princípio dos juros compostos também pode ser aplicado a Investimentos, usando o retorno passado do investimento em questão como uma taxa de juro.
+            </p>
+
+            <h2>Opções comuns de Investimento</h2>
+            <p>
+                Aqui estão apresentados os retornos de alguns investimentos muito utilizados. A Simulação foi feita para um investidor com 18 anos, com um capital inicial de 10000€, sem reforços dos investimento.
+            </p>
+            <p>
+                <ul>
+                    <li>
+                        Azul &rarr; Fundo Global Moderado da Caixa Geral de Depósitos.
+                    </li>
+                    <li>Preto &rarr; Economia Americana (S&P 500)</li>
+                    <li>Verde &rarr; Economia Europeia (STOXX 600)</li>
+                </ul>
+            </p>
+            <div><canvas id="ChartInvestimentos"></canvas></div>
+            <p>
+                O Fundo da CGD teve um retorno médio anualizado nos ultimos 60 meses de 3,55%.
+            </p>
+            <p>
+                Os indíces S&P 500 e o STOXX 600 tiverem um retorno de 13,45% e de 7,69%, respetivamente, se forem seguidos usando os ETFs da iShares.
+            </p>
+
+            <h2>Simulação de um Investimento</h2>
+        </section>
+        
+        <section name="tema" style="display: none;">
+            <h1 id="Comparação">Comparação das opções disponíveis</h1>
+            <p>
+                Tal como seria de esperar, investindo o dinheiro em vez de o depositarmos numa conta poupança o nosso lucro pode ser maior.
+            </p>
+            <p>
+                Por outro lado, enquanto que o risco de uma conta poupança é quase nulo, o risco dos investimentos é mais elevado, podendo resultar em perdas monetárias.
+            </p>
+            <p>
+                Num período de 10 anos acaba por compensar () em vez de () em termos de contas poupança, seguindo um caminho mais seguro.
+
+                Mas, no mesmo período e estando dispostos a riscos, é mais vantajoso investir em () do que ().
+            </p>
+        </section>
+        
+        <div class="arrows">
+            <div>
+                <a name="arrowLink" href="#" onclick="changeSection(-1)" rel="prev" style="color: black;"><i class="far fa-arrow-alt-circle-left fa-2x"></i></a>
+            </div>
+            <div>
+                <a name="arrowLink" href="#" onclick="changeSection(1)" rel="prev" style="color: blue;"><i class="far fa-arrow-alt-circle-right fa-2x"></i></a>
+            </div>
+        </div>
+    </main>
+
+
+    <script src="js/index.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+    <script src="js/chart.js"></script>
+
+    <script src="https://kit.fontawesome.com/8b48590a50.js" crossorigin="anonymous"></script>
+</body>
+</html>
