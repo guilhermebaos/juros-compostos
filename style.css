@@ -114,8 +114,11 @@ div.arrows {
     justify-content: space-between;
     width: 100%;
 }
-
 div.arrows > div {
     display: inline;
+}
+
+div.input {
+    margin: 10px 0px;
 }
 

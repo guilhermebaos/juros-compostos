@@ -1,4 +1,4 @@
-const anoInicial = 18
+const anoInicial = 0
 const anoMax = 70
 const montanteInicial = 10000
 
@@ -18,7 +18,7 @@ let CGD, USA, EU
 CGD = [montanteInicial]
 USA = [montanteInicial]
 EU = [montanteInicial]
-for (let i = anoInicial; i < anoMax; i++) {
+for (let i = anoInicial + 1; i < anoMax; i++) {
     anos.push(i)
 
     CGD.push(CGD[CGD.length - 1] * (1 + Investimentos.CGD))
@@ -53,7 +53,7 @@ new Chart(ChartInvestimentos, {
             xAxes: [{
                 scaleLabel: {
                     display: true,
-                    labelString: 'Idade do Investidor',
+                    labelString: 'Anos de Investimento',
                     fontColor: 'black',
                     fontSize: 13,
                     fontFamily: '"Arial", "sans-serif"'
@@ -77,7 +77,7 @@ new Chart(ChartInvestimentos, {
                 title: function(tooltipItems, data) {
                     let tooltipItem = tooltipItems[0]
 
-                    return 'Idade do Investidor: ' + tooltipItem.label
+                    return 'Anos de Investimento: ' + tooltipItem.label
                 },
                 label: function(tooltipItem, data) {
                     let value = Number(tooltipItem.value).toFixed(2)
@@ -93,63 +93,80 @@ new Chart(ChartInvestimentos, {
     },
 })
 
+const capitalInicial = document.getElementById('capitalInicial')
+const reforcoAnual = document.getElementById('reforcoAnual')
+const retornoAnual = document.getElementById('retornoAnual')
 
-function InvestimentosComp() {
-
-
-    new Chart(ChartInvestimentosComp, {
-        type: 'line',
-        data: {
-            labels: anos,
-            datasets: [{
-                data: CGD,
-                label: 'Fundo Global CGD',
-                borderColor: 'blue',
-                fill: false
+capital = []
+let graficoInv = new Chart(ChartInvestimentosComp, {
+    type: 'line',
+    data: {
+        labels: anos,
+        datasets: [{
+            data: capital,
+            label: 'Fundo Global CGD',
+            borderColor: 'blue',
+            fill: false
+        }]
+    },
+    options: {
+        scales: {
+            xAxes: [{
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Anos',
+                    fontColor: 'black',
+                    fontSize: 13,
+                    fontFamily: '"Arial", "sans-serif"'
+                }
+            }],
+            yAxes: [{
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Capital Total (€)',
+                    fontColor: 'black',
+                    fontSize: 13,
+                    fontFamily: '"Arial", "sans-serif"'
+                },
+                ticks: {
+                    min: 0
+                }
             }]
         },
-        options: {
-            scales: {
-                xAxes: [{
-                    scaleLabel: {
-                        display: true,
-                        labelString: 'Anos',
-                        fontColor: 'black',
-                        fontSize: 13,
-                        fontFamily: '"Arial", "sans-serif"'
-                    }
-                }],
-                yAxes: [{
-                    scaleLabel: {
-                        display: true,
-                        labelString: 'Capital Total (€)',
-                        fontColor: 'black',
-                        fontSize: 13,
-                        fontFamily: '"Arial", "sans-serif"'
-                    },
-                    ticks: {
-                        min: 0
-                    }
-                }]
+        tooltips: {
+            callbacks: {
+                title: function(tooltipItems, data) {
+                    let tooltipItem = tooltipItems[0]
+
+                    return 'Ano: ' + tooltipItem.label
+                },
+                label: function(tooltipItem, data) {
+                    let value = Number(tooltipItem.value).toFixed(2)
+
+                    return 'Capital: ' + value + '€'
+                }
             },
-            tooltips: {
-                callbacks: {
-                    title: function(tooltipItems, data) {
-                        let tooltipItem = tooltipItems[0]
+            custom: function(tooltip) {
+                if (!tooltip) return
+                tooltip.displayColors = false
+            },
+        }
+    },
+})
+function InvestimentosComp() {
+    let cI = capitalInicial.value / 1
+    let rM = reforcoAnual.value / 1
+    let r = retornoAnual.value / 100
     
-                        return 'Ano: ' + tooltipItem.label
-                    },
-                    label: function(tooltipItem, data) {
-                        let value = Number(tooltipItem.value).toFixed(2)
+    anos = [anoInicial]
+    let capital = [cI]
+    for (i = anoInicial + 1; i < anoMax; i++) {
+        anos.push(i)
     
-                        return 'Capital: ' + value + '€'
-                    }
-                },
-                custom: function(tooltip) {
-                    if (!tooltip) return
-                    tooltip.displayColors = false
-                },
-            }
-        },
-    })    
+        capital.push(capital[capital.length - 1] * (1 + r) + rM)
+    }
+
+    graficoInv.data.labels = anos
+    graficoInv.data.datasets[0].data = capital
+    graficoInv.update()
 }

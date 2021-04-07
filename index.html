@@ -64,6 +64,16 @@
             </p>
 
             <h2>Simulação de um Investimento</h2>
+            <div class="input">
+                <label for="capitalInicial">Capital Inicial:</label> <input type="number" value="10000" name="capitalInicial" id="capitalInicial" oninput="InvestimentosComp()"> €
+            </div>
+            <div class="input">
+                <label for="reforcoAnual">Reforço Anual:</label> <input type="number" value="500" name="reforcoAnual" id="reforcoAnual" oninput="InvestimentosComp()"> €
+            </div>
+            <div class="input">
+                <label for="retornoAnual">Retorno Anual:</label> <input type="number" value="5" name="retornoAnual" id="retornoAnual" oninput="InvestimentosComp()"> %
+            </div>
+            <div><canvas id="ChartInvestimentosComp"></canvas></div>
         </section>
         
         <section name="tema" style="display: none;">
