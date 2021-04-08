@@ -107,6 +107,11 @@ p {
     text-indent: 10px;
 }
 
+a {
+    color: blue;
+    text-decoration: none;
+}
+
 
 
 div.arrows {
