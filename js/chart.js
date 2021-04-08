@@ -104,8 +104,8 @@ let graficoInv = new Chart(ChartInvestimentosComp, {
         labels: anos,
         datasets: [{
             data: capital,
-            label: 'Fundo Global CGD',
-            borderColor: 'blue',
+            label: 'Capital',
+            borderColor: 'red',
             fill: false
         }]
     },
