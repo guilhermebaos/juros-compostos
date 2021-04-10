@@ -1,6 +1,96 @@
+const montanteInicial = 10000
+const IRS = 1 - 0.28
+let anos, capital, lucro
+
+// POUPANÇA CTT
+const ChartPoupancaCtt = document.getElementById('ChartPoupancaCtt')
+
+let trimestes = [0]
+capital = [montanteInicial]
+lucro = [0]
+
+let taxaBase = 0.457 / 100
+let premio = 0, juroTotal = 0
+for (let t = 1; t <= 40; t++) {
+    trimestes.push(t)
+
+    if (t > 4) premio = 0.5 / 100
+    if (t > 20) premio = 1 / 100
+
+    juroTotal = (taxaBase + premio) / 4
+
+    ultimoCapital = capital[capital.length - 1]
+    ultimoLucro = ultimoCapital * juroTotal * IRS
+
+    capital.push(ultimoCapital + ultimoLucro)
+    lucro.push(ultimoLucro)
+}
+
+new Chart(ChartPoupancaCtt, {
+    type: 'line',
+    data: {
+        labels: trimestes,
+        datasets: [{
+            data: capital,
+            label: 'Capital Total',
+            borderColor: 'blue',
+            fill: false
+        },{
+            data: lucro,
+            label: 'Lucro em Cada Trimestre',
+            borderColor: 'red',
+            fill: false
+        }]
+    },
+    options: {
+        scales: {
+            xAxes: [{
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Trimestres de Poupança',
+                    fontColor: 'black',
+                    fontSize: 13,
+                    fontFamily: '"Arial", "sans-serif"'
+                }
+            }],
+            yAxes: [{
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Capital Total (€)',
+                    fontColor: 'black',
+                    fontSize: 13,
+                    fontFamily: '"Arial", "sans-serif"'
+                },
+                ticks: {
+                    min: 0
+                }
+            }]
+        },
+        tooltips: {
+            callbacks: {
+                title: function(tooltipItems, data) {
+                    let tooltipItem = tooltipItems[0]
+
+                    return 'Trimestres de Poupança: ' + tooltipItem.label
+                },
+                label: function(tooltipItem, data) {
+                    let value = Number(tooltipItem.value).toFixed(2)
+
+                    return data.datasets[tooltipItem.datasetIndex].label + ': ' + value + '€'
+                }
+            },
+            custom: function(tooltip) {
+                if (!tooltip) return
+                tooltip.displayColors = false
+            },
+        }
+    },
+})
+
+
+// INVESTIMENTOS
 const anoInicial = 0
 const anoMax = 70
-const montanteInicial = 10000
 
 const ChartInvestimentos = document.getElementById('ChartInvestimentos')
 const ChartInvestimentosComp = document.getElementById('ChartInvestimentosComp')
@@ -11,13 +101,13 @@ const Investimentos = {
     EU: 0.0769,
 }
 
-
-let anos = [anoInicial]
 let CGD, USA, EU
 
 CGD = [montanteInicial]
 USA = [montanteInicial]
 EU = [montanteInicial]
+
+anos = [anoInicial]
 for (let i = anoInicial + 1; i < anoMax; i++) {
     anos.push(i)
 

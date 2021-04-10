@@ -95,16 +95,24 @@ header {
 
 h1 {
     font-size: 1.7em;
-    text-decoration: underline var(--main-color-left-dark);
+    text-decoration: underline var(--main-color-right);
 }
 h2 {
     margin-top: 40px;
     font-size: 1.4em;
-    text-decoration: underline var(--main-color-right);
+    text-decoration: underline var(--main-color-left-dark);
+}
+h3 {
+    margin: 25px 0px 10px 0px;
+    text-decoration: underline var(--main-color-left-dark);
+}
+h4 {
+    margin: 25px 0px 10px 0px;
 }
 
 p {
     text-indent: 10px;
+    margin: 10px 0px;
 }
 
 a {

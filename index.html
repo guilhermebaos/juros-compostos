@@ -8,12 +8,27 @@
 
     <link rel="stylesheet" href="style.css">
 
-    <script src="js/index.js" defer></script>
-    
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" defer></script>
-    <script src="js/chart.js" defer></script>
 
-    <script src="https://kit.fontawesome.com/8b48590a50.js" crossorigin="anonymous" defer></script>
+    <!--Chart.js-->
+    <script defer src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+
+    <!--Font Awesome-->
+    <script defer src="https://kit.fontawesome.com/8b48590a50.js" crossorigin="anonymous"></script>
+
+
+    <!--KaTeX-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.css" integrity="sha384-Cqd8ihRLum0CCg8rz0hYKPoLZ3uw+gES2rXQXycqnL5pgVQIflxAUDS7ZSjITLb5" crossorigin="anonymous">
+
+    <!-- The loading of KaTeX is deferred to speed up page rendering -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.js" integrity="sha384-1Or6BdeNQb0ezrmtGeqQHFpppNd7a/gw29xeiSikBbsb44xu3uAo8c7FwbF5jhbd" crossorigin="anonymous"></script>
+
+    <!-- To automatically render math in text elements, include the auto-render extension: -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+
+
+    <!--My JS-->
+    <script defer src="js/index.js"></script>
+    <script defer src="js/chart.js"></script>
 </head>
 <body>
     <nav>
@@ -31,9 +46,6 @@
         <header>
             <strong>Juros Compostos:</strong> Poupanças e Investimentos
         </header>
-        <p>
-            Neste trabalho exploramos os juros compostos. Nomeadamente, como comparar diferentes formas de aplicar o dinheiro, usando diferentes janelas de tempo, retornos anuais e frequências de composição dos juros.
-        </p>
         
         <section name="tema">
             <h1 id="Juros">Juros Simples vs. Juros Compostos</h1>
@@ -41,6 +53,65 @@
 
         <section name="tema" style="display: none;">
             <h1 id="Poupanças">Poupanças</h1>
+
+            <h2>Certificados de aforro: Banco Ctt</h2>
+            <ul>
+                <li>Juros calculados de 3 em 3 meses e somados à poupança</li>
+                <li>Investimento mínimo de 100€ e máximo de 250.000€</li>
+                <li>Fácil de subscrever e fácil de resgatar</li>
+                <li>Subscrição e levantamento sem quaisquer encargos</li>
+                <li>Prémios de permanência até 1%</li>
+            </ul>
+
+            <h3>Como cresce a poupança:</h3>
+            <p>
+                Cada subscrição vence juros com uma periodicidade trimestral. A taxa de juro é a soma da taxa base na data de início do trimestre com o prémio de permanência.
+            </p>
+
+            <h4>Taxa base</h4>
+            <p>
+                A taxa-base é determinada mensalmente no antepenúltimo dia útil do mês para vigorar durante o mês seguinte, segundo a fórmula:
+            </p>
+            \[E3 + 1\%\]
+            <p>
+                Onde \(E3\) é a média dos valores da Euribor a três meses observados nos últimos dez dias úteis antes do cálculo. O resultado é arredondado à terceira casa decimal. Não pode ser superior a 3,5% nem inferior a 0%.
+            </p>
+
+            <h4>Período de Permanência</h4>
+            <p>
+                O prémio de permanência é somado à taxa-base a partir do 2.º ano.
+            </p>
+            <ul>
+                <li>
+                    Do início do 2.º ano ao fim do 5.º ano, soma-se 0,5 % à taxa-base.
+                </li>
+                <li>
+                    Do início do 6.º ano ao fim do 10.º ano, soma-se 1,0 % à taxa-base.
+                </li>
+            </ul>
+            <hr>
+            <p>
+                Os juros têm capitalização automática a cada 3 meses. No final de cada trimestre, os juros são automaticamente somados à poupança, fazendo-a render mais no trimestre seguinte.
+            </p>
+
+            <h3>Grau de Segurança: Total</h3>
+            <p>
+                Os Certificados de Aforro são dívida pública com capital garantido. Isto significa que, ao subscrever Certificados de Aforro, emprestamos dinheiro ao Estado Português. É o Estado Português que garante que vamos receber de volta toda a poupança e os juros a que tiver direito.
+            </p>
+
+            <h3>Grau de disponibilidade do dinheiro: Elevado.</h3>
+            <p>
+                A poupança pode ser levantada ao fim dos primeiros 3 meses. O prazo dos Certificados de Aforro série E é de 10 anos a partir da data em que forem subscritos. No entanto, só não é possível levantar o dinheiro durante os primeiros 3 meses. Depois, pode-se levanar a qualquer momento, sem qualquer encargo.
+            </p>
+            <p>
+                Se não levantarmos a poupança antes, iremos recebê-la, com os juros ganhos, 10 anos depois de subscrever os Certificados de Aforro série E.
+            </p>
+
+            <h3>Capital ao Longo do Tempo:</h3>
+            <div><canvas id="ChartPoupancaCtt"></canvas></div>
+            <p>
+                Este gráfico apresenta o resultado líquido (tendo em conta impostos) desta poupança, a dez anos.
+            </p>
         </section>
 
         <section name="tema" style="display: none;">
