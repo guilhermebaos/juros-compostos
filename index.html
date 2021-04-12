@@ -53,9 +53,43 @@
 
         <section name="tema" style="display: none;">
             <h1 id="Poupanças">Poupanças</h1>
+            <p>
+                A <strong>poupança</strong> é a parcela dos nossos rendimentos que não são gastos no período em que os recebemos. 
+            </p>
+            <p>
+                Por não sabermos o que nos vai acontecer no futuro, devemos sempre guardar parte do que recebemos para nos prevenirmos de possíveis emergências. 
+            </p>
+            <p>
+                Podemos identificar o que é a poupança ao subtrairmos o que gastamos ao que ganhamos. Enquanto alguns académicos defendem que a poupança é determinada pelos rendimentos (os mais ricos tendem a poupar mais), outros defendem que quanto maior o rendimento, maiores são os gastos.
+            </p>
+
+            <h2>Conta Poupança Programada NOVO BANCO</h2>
+            <ul>
+                <li>Depósito a prazo para 10 anos</li>
+                <li>Juros calculados e capitalizados anualmente</li>
+                <li>Não tem montante mínimo de abertura</li>
+                <li>Fácil de subscrever e fácil de resgatar</li>
+                <li>Subscrição e levantamento sem quaisquer encargos</li>
+                <li>Taxa de juro líquida (TAEL) DE 0,744%; não negociável</li>
+            </ul>
+
+            <h3>Garantias</h3>
+            <p>
+                Garantia da totalidade do capital quer no seu vencimento, quer no caso de mobilização antecipada. Os depósitos constituídos no NOVO BANCO beneficiam da garantia de reembolso prestada pelo Fundo de Garantia de Depósitos.
+            </p>
+            
+            <h3>Capital ao Longo do Tempo:</h3>
+            <div class="graf-overflow">
+                <div class="graf-container">
+                    <canvas id="ChartPoupancaNovoBanco"></canvas>
+                </div>
+            </div>
+
+            <p><strong>Lucro Total:</strong>769,41€</p>
 
             <h2>Certificados de aforro: Banco Ctt</h2>
             <ul>
+                <li>Poupança para 10 anos</li>
                 <li>Juros calculados de 3 em 3 meses e somados à poupança</li>
                 <li>Investimento mínimo de 100€ e máximo de 250.000€</li>
                 <li>Fácil de subscrever e fácil de resgatar</li>
@@ -77,7 +111,7 @@
                 Onde \(E3\) é a média dos valores da Euribor a três meses observados nos últimos dez dias úteis antes do cálculo. O resultado é arredondado à terceira casa decimal. Não pode ser superior a 3,5% nem inferior a 0%.
             </p>
 
-            <h4>Período de Permanência</h4>
+            <h4>Prémio de Permanência</h4>
             <p>
                 O prémio de permanência é somado à taxa-base a partir do 2.º ano.
             </p>
@@ -108,9 +142,16 @@
             </p>
 
             <h3>Capital ao Longo do Tempo:</h3>
-            <div><canvas id="ChartPoupancaCtt"></canvas></div>
+            <div class="graf-overflow">
+                <div class="graf-container">
+                    <canvas id="ChartPoupancaCtt"></canvas>
+                </div>
+            </div>
+            <p><strong>Lucro Total:</strong> 867,70€</p>
+
+            <h2>Nota:</h2>
             <p>
-                Este gráfico apresenta o resultado líquido (tendo em conta impostos) desta poupança, a dez anos.
+                Os gráficos apresenta o resultado líquido (tendo em conta impostos) das poupança, a dez anos.
             </p>
         </section>
 
@@ -133,7 +174,11 @@
                     <li>Verde &rarr; Economia Europeia (STOXX 600)</li>
                 </ul>
             </p>
-            <div><canvas id="ChartInvestimentos"></canvas></div>
+            <div class="graf-overflow">
+                <div class="graf-container">
+                    <canvas id="ChartInvestimentos"></canvas>
+                </div>
+            </div>
             <p>
                 O Fundo da CGD teve um retorno médio anualizado nos ultimos 60 meses de 3,55%<sup><a href="https://www.cgd.pt/Particulares/Poupanca-Investimento/Fundos-de-Investimento/Pages/CaixagestSelecaoGlobal.aspx" target="_blank" rel="noopener noreferrer">[1]</a></sup>.
             </p>
@@ -146,12 +191,19 @@
                 <label for="capitalInicial">Capital Inicial:</label> <input type="number" value="10000" name="capitalInicial" id="capitalInicial" oninput="InvestimentosComp()"> €
             </div>
             <div class="input">
-                <label for="reforcoAnual">Reforço Anual:</label> <input type="number" value="500" name="reforcoAnual" id="reforcoAnual" oninput="InvestimentosComp()"> €
-            </div>
-            <div class="input">
                 <label for="retornoAnual">Retorno Anual:</label> <input type="number" value="5" name="retornoAnual" id="retornoAnual" oninput="InvestimentosComp()"> %
             </div>
-            <div><canvas id="ChartInvestimentosComp"></canvas></div>
+            <div class="input">
+                <label for="tempo">Duração do Investimento:</label> <input type="number" value="10" name="tempo" id="tempo" oninput="InvestimentosComp()"> anos
+            </div>
+            <div class="input">
+                <label for="modalidade">Modalidade:</label> <select name="modalidade" id="modalidade" oninput="InvestimentosComp()"><option value="Acumulação">Acumulação</option><option value="Distribuição">Distribuição</option></select>
+            </div>
+            <div class="graf-overflow">
+                <div class="graf-container">
+                    <canvas id="ChartInvestimentosComp"></canvas>
+                </div>
+            </div>
         </section>
         
         <section name="tema" style="display: none;">

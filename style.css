@@ -110,6 +110,7 @@ h4 {
     margin: 25px 0px 10px 0px;
 }
 
+
 p {
     text-indent: 10px;
     margin: 10px 0px;
@@ -133,5 +134,33 @@ div.arrows > div {
 
 div.input {
     margin: 10px 0px;
+}
+
+
+div.graf-overflow {
+    overflow-x: auto;
+    overflow-y: hidden;
+    width: 100%;
+    margin: 0px 0px 20px 0px;
+    padding: 0px;
+}
+div.graf-container {
+    margin: auto;
+    padding: 0px;
+    min-width: 600px;
+    min-height: 300px;
+    max-width: 1000px;
+    max-height: 500px;
+}
+
+
+canvas {
+    margin: auto;
+    z-index: -1;
+}
+
+
+select {
+    font-size: large;
 }
 
