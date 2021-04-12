@@ -88,6 +88,7 @@ new Chart(ChartPoupancaNovoBanco, {
         }
     },
 })
+let capitalNB = capital 
 
 
 
@@ -175,6 +176,7 @@ new Chart(ChartPoupancaCtt, {
         }
     },
 })
+let capitalCtt = capital 
 
 
 
@@ -373,3 +375,87 @@ function InvestimentosComp() {
     graficoInv.update()
 }
 InvestimentosComp()
+
+
+// Comparação
+const ChartComp = document.getElementById('ChartComp')
+const AnosComp = 10
+
+anos = []
+for (i = 0; i < AnosComp; i++) anos.push(i)
+
+new Chart(ChartComp, {
+    type: 'line',
+    data: {
+        labels: anos,
+        datasets: [{
+            data: capitalNB.slice(0, AnosComp),
+            label: 'NOVO BANCO',
+            borderColor: 'limegreen',
+            fill: false
+        },{
+            data: capitalCtt.slice(0, AnosComp),
+            label: 'Ctt',
+            borderColor: 'red',
+            fill: false
+        },{
+            data: CGD.slice(0, AnosComp),
+            label: 'Fundo Global CGD',
+            borderColor: 'blue',
+            fill: false
+        },{
+            data: USA.slice(0, AnosComp),
+            label: 'S&P 500',
+            borderColor: 'black',
+            fill: false
+        },{
+            data: EU.slice(0, AnosComp),
+            label: 'STOXX 600',
+            borderColor: 'green',
+            fill: false
+        }]
+    },
+    options: {
+        scales: {
+            xAxes: [{
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Anos de Investimento',
+                    fontColor: 'black',
+                    fontSize: 13,
+                    fontFamily: '"Arial", "sans-serif"'
+                }
+            }],
+            yAxes: [{
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Capital Total (€)',
+                    fontColor: 'black',
+                    fontSize: 13,
+                    fontFamily: '"Arial", "sans-serif"'
+                },
+                ticks: {
+                    min: 0
+                }
+            }]
+        },
+        tooltips: {
+            callbacks: {
+                title: function(tooltipItems, data) {
+                    let tooltipItem = tooltipItems[0]
+
+                    return 'Anos de Investimento: ' + tooltipItem.label
+                },
+                label: function(tooltipItem, data) {
+                    let value = Number(tooltipItem.value).toFixed(2)
+
+                    return 'Capital: ' + value + '€'
+                }
+            },
+            custom: function(tooltip) {
+                if (!tooltip) return
+                tooltip.displayColors = false
+            },
+        }
+    },
+})
