@@ -363,7 +363,7 @@ function InvestimentosComp() {
         let imposto = lucro.reduce((a, b) => a + b) * (1 - IRS)
 
         anos.push(i)
-        capital[capital.length - 1] -= imposto
+        capital.push(capital[capital.length - 1] - imposto)
         lucro.push(-imposto)
     }
 
@@ -372,3 +372,4 @@ function InvestimentosComp() {
     graficoInv.data.datasets[1].data = lucro
     graficoInv.update()
 }
+InvestimentosComp()
