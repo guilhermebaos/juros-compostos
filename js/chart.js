@@ -11,6 +11,7 @@ trimestes = [0]
 capital = [montanteInicial]
 lucro = [0]
 
+// A TAEL já têm em conta impostos
 const TAEL = 0.744 / 100
 for (let t = 1; t <= 40; t++) {
     trimestes.push(t)
